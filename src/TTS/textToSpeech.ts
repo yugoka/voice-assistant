@@ -7,7 +7,7 @@ const util = require("util");
 
 // Google Cloud認証情報の設定
 process.env.GOOGLE_APPLICATION_CREDENTIALS =
-  process.env.SPEECH_TO_TEXT_CREDENTIALS_PATH;
+  process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 // クライアントの初期化
 const client = new gcpTextToSpeech.TextToSpeechClient();

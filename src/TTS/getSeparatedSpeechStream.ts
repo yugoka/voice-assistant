@@ -10,7 +10,10 @@ export async function* getSeparatedSpeechStream(
 
     for await (const chunk of stream) {
       const fileName = textToSpeech(chunk);
-      yield fileName;
+      yield {
+        audioFile: fileName,
+        message: chunk,
+      };
     }
   } catch (error) {
     console.error(error);
