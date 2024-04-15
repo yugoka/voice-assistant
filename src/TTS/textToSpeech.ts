@@ -22,7 +22,7 @@ export async function textToSpeech(text: string) {
       ssmlGender: "NEUTRAL",
       name: "ja-JP-Wavenet-A",
     },
-    audioConfig: { audioEncoding: "MP3" },
+    audioConfig: { audioEncoding: "MP3", speakingRate: 1.1 },
   };
 
   const [response] = await client.synthesizeSpeech(request);
