@@ -18,7 +18,8 @@ app.post("/speech", async (req: Request, res: Response) => {
   res.status(200);
 
   for await (const chunk of stream) {
-    res.write(chunk);
+    const serializedChunk = JSON.stringify(chunk);
+    res.write(serializedChunk + "\n");
   }
 
   res.end();

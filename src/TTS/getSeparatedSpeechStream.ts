@@ -9,10 +9,10 @@ export async function* getSeparatedSpeechStream(
     const stream = getSeparatedChatStream(messages);
 
     for await (const chunk of stream) {
-      const fileName = textToSpeech(chunk);
+      const { audioBinary } = await textToSpeech(chunk);
       yield {
-        audioFile: fileName,
         message: chunk,
+        audioBinary,
       };
     }
   } catch (error) {

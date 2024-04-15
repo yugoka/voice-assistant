@@ -2,7 +2,7 @@ import path from "path";
 import { generateUniqueFileName } from "../util/generateUniqueFileName";
 
 const gcpTextToSpeech = require("@google-cloud/text-to-speech");
-const fs = require("fs");
+const fs = require("fs").promises;
 const util = require("util");
 
 // Google Cloud認証情報の設定
@@ -26,12 +26,6 @@ export async function textToSpeech(text: string) {
   };
 
   const [response] = await client.synthesizeSpeech(request);
-  const outputFile = path.join(
-    process.env.AUDIO_FILE_OUTPUT_PATH || "",
-    `${generateUniqueFileName()}.mp3`
-  );
-  const writeFile = util.promisify(fs.writeFile);
-  await writeFile(outputFile, response.audioContent, "binary");
 
-  return outputFile;
+  return { audioBinary: response.audioContent };
 }
