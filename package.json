@@ -1,0 +1,24 @@
+{
+  "name": "chatgpt-voice-bot",
+  "version": "1.0.0",
+  "description": "A simple voice bot that interacts with ChatGPT using Google Text-to-Speech and Speech-to-Text.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/speech": "^6.5.0",
+    "@google-cloud/text-to-speech": "^5.2.0",
+    "openai": "^4.33.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
