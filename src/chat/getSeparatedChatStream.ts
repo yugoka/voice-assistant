@@ -8,6 +8,7 @@ export async function* getSeparatedChatStream(
   try {
     const stream = await chatWithOpenAIWithStream(messages);
 
+    let sectionCount = 0;
     let sectionText = "";
     for await (const chunk of stream) {
       const chunkText = chunk.choices[0].delta.content;
@@ -16,9 +17,11 @@ export async function* getSeparatedChatStream(
 
         // 区切り文字を含むなら小分けにして送信
         if (SEPRARATOR_WORDS.some((word) => chunkText?.includes(word))) {
-          if (sectionText.length >= 30) {
+          // 初期レスポンスを早めるため、最初のセクションは文字数制限を無視する
+          if (sectionText.length >= 30 || sectionCount === 0) {
             yield sectionText;
             sectionText = "";
+            sectionCount += 1;
           }
         }
       }

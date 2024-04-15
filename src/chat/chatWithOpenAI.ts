@@ -3,6 +3,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+console.log(process.env.CHATGPT_MODEL_NAME || "gpt-3.5-turbo");
+
 export const chatWithOpenAIWithStream = async (
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
 ) => {
