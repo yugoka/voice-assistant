@@ -1,13 +1,11 @@
-import { chatWithOpenAI } from "./chatWithOpenAI";
+import { getSeparatedChatStream } from "./chat/chatSpeechStream";
 
 const main = async () => {
-  try {
-    const response = await chatWithOpenAI([
-      { role: "user", content: "こんにちは" },
-    ]);
-    console.log(response);
-  } catch (error) {
-    console.error(error);
+  console.log("=== init ===");
+
+  const stream = getSeparatedChatStream();
+  for await (const chunk of stream) {
+    console.log(chunk);
   }
 };
 
