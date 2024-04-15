@@ -6,5 +6,5 @@ services:
       - .:/usr/src/app
     ports:
       - "3000:3000"
-    environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/credentials.json
+    env_file:
+      - ./.env

@@ -7,7 +7,7 @@ export const chatWithOpenAI = async (
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
 ) => {
   const stream = await openai.chat.completions.create({
-    model: "gpt-4-turbo",
+    model: process.env.CHATGPT_MODEL_NAME || "gpt-3.5-turbo",
     messages,
     stream: true,
   });
