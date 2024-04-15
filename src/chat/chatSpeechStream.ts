@@ -1,11 +1,12 @@
+import OpenAI from "openai";
 import { chatWithOpenAIWithStream } from "./chatWithOpenAI";
 const SEPRARATOR_WORDS = ["。", "、", "！", "？"];
 
-export async function* getSeparatedChatStream() {
+export async function* getSeparatedChatStream(
+  messages: OpenAI.Chat.ChatCompletionMessageParam[]
+) {
   try {
-    const stream = await chatWithOpenAIWithStream([
-      { role: "user", content: "鵜を捕まえるお祭りについて説明して" },
-    ]);
+    const stream = await chatWithOpenAIWithStream(messages);
 
     let sectionText = "";
     for await (const chunk of stream) {
