@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getSeparatedChatStream } from "../chat/getSeparatedChatStream";
 import { textToSpeech } from "./textToSpeech";
-import { preprocess } from "../chat/preprocess";
+import { preprocess } from "../util/preprocess";
 
 export async function* getSeparatedSpeechStream(
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
